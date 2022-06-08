@@ -48,7 +48,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed|min:6',
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors(), 400);
         }
         $user = User::create(array_merge(
             $validator->validated(),
